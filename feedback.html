@@ -11,13 +11,103 @@
     >
 
     <title>
-        AgroSense Dynamics | Feedback
+        Feedback Sent | AgroSense Dynamics
     </title>
 
     <link
         rel="stylesheet"
         href="style.css"
     >
+
+    <style>
+
+        .success-page {
+
+            min-height: 80vh;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            padding: 40px 20px;
+
+        }
+
+
+        .success-card {
+
+            width: min(600px, 100%);
+
+            padding: 50px 35px;
+
+            text-align: center;
+
+        }
+
+
+        .success-icon {
+
+            width: 90px;
+
+            height: 90px;
+
+            margin: 0 auto 25px;
+
+            display: grid;
+
+            place-items: center;
+
+            border-radius: 50%;
+
+            font-size: 45px;
+
+            background:
+                rgba(109, 255, 159, 0.10);
+
+            border:
+                1px solid
+                rgba(109, 255, 159, 0.3);
+
+            animation:
+                successPulse 2s ease-in-out infinite;
+
+        }
+
+
+        @keyframes successPulse {
+
+            0%, 100% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.08);
+            }
+
+        }
+
+
+        .success-card h1 {
+
+            font-size:
+                clamp(38px, 6vw, 58px);
+
+            margin-bottom: 18px;
+
+        }
+
+
+        .success-card p {
+
+            color: var(--muted);
+
+            line-height: 1.8;
+
+        }
+
+    </style>
 
 </head>
 
@@ -40,243 +130,50 @@
 
     </a>
 
-
-    <div class="nav-links">
-
-        <a href="index.html">
-            Home
-        </a>
-
-        <a href="overview.html">
-            Overview
-        </a>
-
-        <a href="peacock.html">
-            Peacock
-        </a>
-
-        <a href="theft.html">
-            Motor Theft
-        </a>
-
-        <a href="snake.html">
-            Snake
-        </a>
-
-        <a href="order.html">
-            Order
-        </a>
-
-        <a
-            href="feedback.html"
-            class="active"
-        >
-            Feedback
-        </a>
-
-    </div>
-
 </nav>
 
 
-<section class="page-header">
+<main class="success-page">
 
-    <div class="badge">
-        YOUR FEEDBACK MATTERS
-    </div>
+    <section class="success-card glass reveal">
 
-    <h1>
+        <div class="success-icon">
+            ✓
+        </div>
 
-        Help us
-        <span class="gradient">
-            improve.
-        </span>
+        <div class="badge">
+            FEEDBACK RECEIVED
+        </div>
 
-    </h1>
+        <h1>
 
-    <p>
-        Tell us what you think about AgroSense
-        Dynamics and what improvements you would
-        like to see.
-    </p>
+            Thank
+            <span class="gradient">
+                You!
+            </span>
 
-</section>
+        </h1>
+
+        <p>
+
+            Your feedback has been successfully
+            submitted to AgroSense Dynamics.
+
+            <br><br>
+
+            Your suggestions will help us improve
+            the system.
+
+        </p>
 
 
-<main>
-
-    <section class="feedback glass">
-
-
-        <!-- FORMSUBMIT -->
-
-        <form
-            action="https://formsubmit.co/agrosensedynamics@gmail.com"
-            method="POST"
+        <a
+            href="overview.html"
+            class="btn primary"
         >
-
-
-            <input
-                type="hidden"
-                name="_subject"
-                value="AGROSENSE DYNAMICS FEEDBACK"
-            >
-
-
-            <input
-                type="hidden"
-                name="_template"
-                value="table"
-            >
-
-
-            <input
-                type="hidden"
-                name="_captcha"
-                value="true"
-            >
-
-
-            <input
-                type="hidden"
-                name="_next"
-                value="https://YOUR-USERNAME.github.io/YOUR-REPOSITORY/feedback-success.html"
-            >
-
-
-            <!-- NAME -->
-
-            <label for="feedbackName">
-                Name
-            </label>
-
-            <input
-                type="text"
-                id="feedbackName"
-                name="Name"
-                placeholder="Enter your name"
-                required
-            >
-
-
-            <!-- RATING -->
-
-            <label>
-                Rating
-            </label>
-
-
-            <div class="stars">
-
-                <button
-                    type="button"
-                    class="star"
-                    data-rating="1"
-                    aria-label="1 star"
-                >
-                    ★
-                </button>
-
-                <button
-                    type="button"
-                    class="star"
-                    data-rating="2"
-                    aria-label="2 stars"
-                >
-                    ★
-                </button>
-
-                <button
-                    type="button"
-                    class="star"
-                    data-rating="3"
-                    aria-label="3 stars"
-                >
-                    ★
-                </button>
-
-                <button
-                    type="button"
-                    class="star"
-                    data-rating="4"
-                    aria-label="4 stars"
-                >
-                    ★
-                </button>
-
-                <button
-                    type="button"
-                    class="star"
-                    data-rating="5"
-                    aria-label="5 stars"
-                >
-                    ★
-                </button>
-
-            </div>
-
-
-            <!-- IMPORTANT:
-                 Hidden field receives rating -->
-
-            <input
-                type="hidden"
-                id="rating"
-                name="Star Rating"
-                value=""
-                required
-            >
-
-
-            <!-- IMPROVEMENTS -->
-
-            <label for="improvements">
-                Improvements Needed
-            </label>
-
-            <textarea
-                id="improvements"
-                name="Improvements Needed"
-                placeholder="Tell us what we can improve..."
-                required
-            ></textarea>
-
-
-            <!-- FAVORITE PART -->
-
-            <label for="favorite">
-                Favorite Part
-            </label>
-
-            <textarea
-                id="favorite"
-                name="Favorite Part"
-                placeholder="What did you like most?"
-            ></textarea>
-
-
-            <div class="button-row">
-
-                <button
-                    type="submit"
-                    class="btn primary"
-                >
-                    Send Feedback
-                    <span>→</span>
-                </button>
-
-
-                <button
-                    type="reset"
-                    class="btn btn-reset"
-                    onclick="resetStars()"
-                >
-                    Reset
-                </button>
-
-            </div>
-
-        </form>
+            Back to Overview
+            <span>→</span>
+        </a>
 
     </section>
 
@@ -289,64 +186,6 @@
     All Rights Reserved.
 
 </footer>
-
-
-<script>
-
-const stars =
-    document.querySelectorAll(".star");
-
-const ratingInput =
-    document.getElementById("rating");
-
-
-stars.forEach(function(star) {
-
-    star.addEventListener("click", function() {
-
-        const rating =
-            Number(this.dataset.rating);
-
-
-        ratingInput.value =
-            rating + " / 5";
-
-
-        stars.forEach(function(item) {
-
-            if (
-                Number(item.dataset.rating)
-                <= rating
-            ) {
-
-                item.classList.add("active");
-
-            } else {
-
-                item.classList.remove("active");
-
-            }
-
-        });
-
-    });
-
-});
-
-
-function resetStars() {
-
-    ratingInput.value = "";
-
-    stars.forEach(function(star) {
-
-        star.classList.remove("active");
-
-    });
-
-}
-
-</script>
 
 
 </body>
