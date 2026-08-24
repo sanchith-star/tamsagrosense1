@@ -1,434 +1,401 @@
-/* =====================================================
-   AGROSENSE DYNAMICS
-   MAIN JAVASCRIPT
-   ===================================================== */
+const PROFILE_KEY = "agrosenseProfile";
 
 
-/* =====================================================
-   WAIT FOR PAGE TO LOAD
-   ===================================================== */
+// ================================
+// HOME PAGE
+// ================================
 
-document.addEventListener("DOMContentLoaded", function () {
+const profileForm =
+    document.getElementById("profileForm");
 
+if (profileForm) {
 
-    /* =================================================
-       LOGIN / HOME PAGE
-       ================================================= */
-
-    const loginForm = document.getElementById("loginForm");
-
-
-    if (loginForm) {
-
-        loginForm.addEventListener("submit", function (event) {
-
-            /*
-             Prevent the browser from
-             refreshing the page.
-            */
+    profileForm.addEventListener(
+        "submit",
+        function(event) {
 
             event.preventDefault();
 
-
-            /* =========================================
-               GET USER DETAILS
-            ========================================= */
-
             const name =
-                document
-                    .getElementById("name")
-                    .value
-                    .trim();
-
-
-            const phone =
-                document
-                    .getElementById("phone")
-                    .value
-                    .trim();
-
+                document.getElementById("name")
+                .value.trim();
 
             const address =
-                document
-                    .getElementById("address")
-                    .value
-                    .trim();
+                document.getElementById("address")
+                .value.trim();
 
+            const phone =
+                document.getElementById("phone")
+                .value.trim();
 
-            /* =========================================
-               VALIDATION
-            ========================================= */
-
-            if (name === "") {
-
-                alert("Please enter your name.");
-
-                document
-                    .getElementById("name")
-                    .focus();
-
-                return;
-
-            }
-
-
-            if (phone === "") {
-
-                alert("Please enter your phone number.");
-
-                document
-                    .getElementById("phone")
-                    .focus();
-
-                return;
-
-            }
-
-
-            if (address === "") {
-
-                alert("Please enter your address.");
-
-                document
-                    .getElementById("address")
-                    .focus();
-
-                return;
-
-            }
-
-
-            /* =========================================
-               PHONE VALIDATION
-            ========================================= */
-
-            const phonePattern =
-                /^[0-9+\-\s()]{10,15}$/;
-
-
-            if (!phonePattern.test(phone)) {
+            if (!name || !address || !phone) {
 
                 alert(
-                    "Please enter a valid phone number."
+                    "Please fill in all details."
                 );
-
-                document
-                    .getElementById("phone")
-                    .focus();
 
                 return;
-
             }
 
-
-            /* =========================================
-               SAVE DETAILS
-            ========================================= */
-
-            localStorage.setItem(
-                "agroName",
-                name
-            );
-
-
-            localStorage.setItem(
-                "agroPhone",
-                phone
-            );
-
-
-            localStorage.setItem(
-                "agroAddress",
-                address
-            );
-
-
-            /* =========================================
-               SAVE COMPLETE CUSTOMER OBJECT
-            ========================================= */
-
-            const customer = {
-
+            const profile = {
                 name: name,
-
-                phone: phone,
-
                 address: address,
-
-                date:
-                    new Date().toLocaleString()
-
+                phone: phone
             };
 
-
             localStorage.setItem(
-                "agroCustomer",
-                JSON.stringify(customer)
+                PROFILE_KEY,
+                JSON.stringify(profile)
             );
 
-
-            /* =========================================
-               BUTTON ANIMATION
-            ========================================= */
-
-            const button =
-                loginForm.querySelector(
-                    "button[type='submit']"
-                );
+            pageTransition(
+                "overview.html"
+            );
+        }
+    );
+}
 
 
-            if (button) {
+// ================================
+// PAGE TRANSITION
+// ================================
 
-                button.disabled = true;
+function pageTransition(url) {
 
-                button.innerHTML =
-                    "Loading <span>✓</span>";
+    document.body.style.opacity = "0";
 
-            }
+    document.body.style.transform =
+        "translateY(10px)";
+
+    document.body.style.transition =
+        "opacity .3s ease, transform .3s ease";
+
+    setTimeout(function() {
+
+        window.location.href = url;
+
+    }, 300);
+}
 
 
-            /* =========================================
-               GO TO OVERVIEW PAGE
-            ========================================= */
+// ================================
+// LOAD PROFILE
+// ================================
 
-            setTimeout(function () {
+function getProfile() {
 
-                window.location.href =
-                    "overview.html";
+    const saved =
+        localStorage.getItem(
+            PROFILE_KEY
+        );
 
-            }, 450);
-
-        });
-
+    if (!saved) {
+        return null;
     }
 
+    try {
 
-    /* =================================================
-       LOAD CUSTOMER DATA ON OTHER PAGES
-       ================================================= */
+        return JSON.parse(saved);
 
-    const savedName =
-        localStorage.getItem("agroName");
+    } catch {
 
+        return null;
 
-    const savedPhone =
-        localStorage.getItem("agroPhone");
-
-
-    const savedAddress =
-        localStorage.getItem("agroAddress");
+    }
+}
 
 
-    /* =================================================
-       DISPLAY NAME IF ELEMENT EXISTS
-       ================================================= */
+// ================================
+// ORDER PAGE
+// ================================
 
-    const nameElements =
-        document.querySelectorAll(
-            "[data-user-name]"
-        );
+const customerDetails =
+    document.getElementById(
+        "customerDetails"
+    );
+
+if (customerDetails) {
+
+    const profile = getProfile();
+
+    if (!profile) {
+
+        customerDetails.innerHTML = `
+            <p>
+                No customer details found.
+                Please return to the Home page.
+            </p>
+        `;
+
+    } else {
+
+        customerDetails.innerHTML = `
+            <strong>
+                ${escapeHTML(profile.name)}
+            </strong>
+
+            <br>
+
+            ${escapeHTML(profile.address)}
+
+            <br>
+
+            ${escapeHTML(profile.phone)}
+        `;
+    }
+}
 
 
-    nameElements.forEach(function (element) {
+// ================================
+// PLACE ORDER
+// ================================
 
-        if (savedName) {
+const orderForm =
+    document.getElementById(
+        "orderForm"
+    );
 
-            element.textContent =
-                savedName;
+if (orderForm) {
+
+    orderForm.addEventListener(
+        "submit",
+        function(event) {
+
+            event.preventDefault();
+
+            const profile = getProfile();
+
+            if (!profile) {
+
+                alert(
+                    "Please enter your details on the Home page first."
+                );
+
+                return;
+            }
+
+            const subject =
+                encodeURIComponent(
+                    "New AgroSense Dynamics Order"
+                );
+
+            const body =
+                encodeURIComponent(
+`
+AGROSENSE DYNAMICS ORDER
+
+Customer Name:
+${profile.name}
+
+Address:
+${profile.address}
+
+Phone Number:
+${profile.phone}
+
+Product:
+AgroSense Smart Farm Protection System
+
+Quantity:
+1
+
+TOTAL:
+₹18,000
+`
+                );
+
+            window.location.href =
+                "mailto:agrosensedynamics@gmail.com" +
+                "?subject=" +
+                subject +
+                "&body=" +
+                body;
 
         }
-
-    });
-
-
-    /* =================================================
-       DISPLAY PHONE IF ELEMENT EXISTS
-       ================================================= */
-
-    const phoneElements =
-        document.querySelectorAll(
-            "[data-user-phone]"
-        );
+    );
+}
 
 
-    phoneElements.forEach(function (element) {
+// ================================
+// STAR RATING
+// ================================
 
-        if (savedPhone) {
+const stars =
+    document.querySelectorAll(".star");
 
-            element.textContent =
-                savedPhone;
+const rating =
+    document.getElementById("rating");
 
-        }
+stars.forEach(function(star) {
 
-    });
+    star.addEventListener(
+        "click",
+        function() {
 
+            const selected =
+                Number(
+                    star.dataset.rating
+                );
 
-    /* =================================================
-       DISPLAY ADDRESS IF ELEMENT EXISTS
-       ================================================= */
+            rating.value = selected;
 
-    const addressElements =
-        document.querySelectorAll(
-            "[data-user-address]"
-        );
+            stars.forEach(function(item) {
 
-
-    addressElements.forEach(function (element) {
-
-        if (savedAddress) {
-
-            element.textContent =
-                savedAddress;
-
-        }
-
-    });
-
-
-    /* =================================================
-       PAGE REVEAL ANIMATION
-       ================================================= */
-
-    const revealElements =
-        document.querySelectorAll(
-            ".reveal"
-        );
-
-
-    revealElements.forEach(function (element, index) {
-
-        element.style.animationDelay =
-            (index * 0.08) + "s";
-
-    });
-
-
-    /* =================================================
-       FEEDBACK STAR SYSTEM
-       ================================================= */
-
-    const stars =
-        document.querySelectorAll(
-            ".star"
-        );
-
-
-    if (stars.length > 0) {
-
-        stars.forEach(function (star) {
-
-            star.addEventListener(
-                "click",
-                function () {
-
-                    const rating =
-                        Number(
-                            star.dataset.rating
-                        );
-
-
-                    stars.forEach(
-                        function (item) {
-
-                            const itemRating =
-                                Number(
-                                    item.dataset.rating
-                                );
-
-
-                            if (
-                                itemRating <= rating
-                            ) {
-
-                                item.classList.add(
-                                    "active"
-                                );
-
-                            } else {
-
-                                item.classList.remove(
-                                    "active"
-                                );
-
-                            }
-
-                        }
+                const value =
+                    Number(
+                        item.dataset.rating
                     );
 
+                if (value <= selected) {
 
-                    localStorage.setItem(
-                        "agroRating",
-                        rating
+                    item.classList.add(
+                        "active"
+                    );
+
+                } else {
+
+                    item.classList.remove(
+                        "active"
                     );
 
                 }
-            );
 
-        });
+            });
 
-    }
-
-
-    /* =================================================
-       RESET BUTTON
-       ================================================= */
-
-    const resetButtons =
-        document.querySelectorAll(
-            ".reset-button"
-        );
-
-
-    resetButtons.forEach(function (button) {
-
-        button.addEventListener(
-            "click",
-            function () {
-
-                const confirmed =
-                    confirm(
-                        "Are you sure you want to reset the entered details?"
-                    );
-
-
-                if (!confirmed) {
-
-                    return;
-
-                }
-
-
-                localStorage.removeItem(
-                    "agroName"
-                );
-
-
-                localStorage.removeItem(
-                    "agroPhone"
-                );
-
-
-                localStorage.removeItem(
-                    "agroAddress"
-                );
-
-
-                localStorage.removeItem(
-                    "agroCustomer"
-                );
-
-
-                localStorage.removeItem(
-                    "agroRating"
-                );
-
-
-                location.reload();
-
-            }
-        );
-
-    });
-
+        }
+    );
 
 });
+
+
+// ================================
+// FEEDBACK
+// ================================
+
+const feedbackForm =
+    document.getElementById(
+        "feedbackForm"
+    );
+
+if (feedbackForm) {
+
+    feedbackForm.addEventListener(
+        "submit",
+        function(event) {
+
+            event.preventDefault();
+
+            if (!rating.value) {
+
+                alert(
+                    "Please select a star rating."
+                );
+
+                return;
+            }
+
+            const feedback =
+                Object.fromEntries(
+                    new FormData(
+                        feedbackForm
+                    )
+                );
+
+            localStorage.setItem(
+                "agrosenseFeedback",
+                JSON.stringify(feedback)
+            );
+
+            const success =
+                document.getElementById(
+                    "feedbackSuccess"
+                );
+
+            success.classList.remove(
+                "hidden"
+            );
+
+            feedbackForm.reset();
+
+            rating.value = "";
+
+            stars.forEach(function(star) {
+
+                star.classList.remove(
+                    "active"
+                );
+
+            });
+
+        }
+    );
+
+}
+
+
+// ================================
+// RESET FEEDBACK
+// ================================
+
+function resetFeedback() {
+
+    const form =
+        document.getElementById(
+            "feedbackForm"
+        );
+
+    if (form) {
+        form.reset();
+    }
+
+    if (rating) {
+        rating.value = "";
+    }
+
+    stars.forEach(function(star) {
+
+        star.classList.remove(
+            "active"
+        );
+
+    });
+
+    const success =
+        document.getElementById(
+            "feedbackSuccess"
+        );
+
+    if (success) {
+
+        success.classList.add(
+            "hidden"
+        );
+
+    }
+}
+
+
+// ================================
+// SECURITY
+// ================================
+
+function escapeHTML(value) {
+
+    return String(value).replace(
+        /[&<>"']/g,
+
+        function(character) {
+
+            return {
+
+                "&": "&amp;",
+                "<": "&lt;",
+                ">": "&gt;",
+                '"': "&quot;",
+                "'": "&#039;"
+
+            }[character];
+
+        }
+    );
+}
