@@ -1,196 +1,353 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AgroSense | Feedback</title>
-<link rel="stylesheet" href="style.css">
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        AgroSense Dynamics | Feedback
+    </title>
+
+    <link
+        rel="stylesheet"
+        href="style.css"
+    >
+
 </head>
+
 
 <body>
 
+
 <nav class="navbar">
 
-<a href="overview.html" class="logo">
-<span class="logo-icon">A</span>
-AgroSense <span>Dynamics</span>
-</a>
+    <a href="index.html" class="logo">
 
-<div class="nav-links">
-<a href="overview.html">Overview</a>
-<a href="peacock.html">Peacock</a>
-<a href="security.html">Security</a>
-<a href="snake.html">Snake</a>
-<a href="rover.html">Rover</a>
-<a href="solar.html">Solar</a>
-<a href="order.html">Order</a>
-<a class="active" href="feedback.html">Feedback</a>
-</div>
+        <span class="logo-icon">
+            A
+        </span>
+
+        <span>
+            AgroSense
+            <span>Dynamics</span>
+        </span>
+
+    </a>
+
+
+    <div class="nav-links">
+
+        <a href="index.html">
+            Home
+        </a>
+
+        <a href="overview.html">
+            Overview
+        </a>
+
+        <a href="peacock.html">
+            Peacock
+        </a>
+
+        <a href="theft.html">
+            Motor Theft
+        </a>
+
+        <a href="snake.html">
+            Snake
+        </a>
+
+        <a href="order.html">
+            Order
+        </a>
+
+        <a
+            href="feedback.html"
+            class="active"
+        >
+            Feedback
+        </a>
+
+    </div>
 
 </nav>
 
 
+<section class="page-header">
+
+    <div class="badge">
+        YOUR FEEDBACK MATTERS
+    </div>
+
+    <h1>
+
+        Help us
+        <span class="gradient">
+            improve.
+        </span>
+
+    </h1>
+
+    <p>
+        Tell us what you think about AgroSense
+        Dynamics and what improvements you would
+        like to see.
+    </p>
+
+</section>
+
+
 <main>
 
-<section class="page-header reveal">
-
-<div class="badge">YOUR OPINION MATTERS</div>
-
-<h1>
-Help us make
-<span class="gradient">AgroSense better.</span>
-</h1>
-
-<p>
-Your feedback helps us improve our technology,
-design and agricultural protection solutions.
-</p>
-
-</section>
+    <section class="feedback glass">
 
 
-<section class="glass feedback">
+        <!-- FORMSUBMIT -->
+
+        <form
+            action="https://formsubmit.co/agrosensedynamics@gmail.com"
+            method="POST"
+        >
 
 
-<form id="feedbackForm">
+            <input
+                type="hidden"
+                name="_subject"
+                value="AGROSENSE DYNAMICS FEEDBACK"
+            >
 
 
-<label>
-Overall Rating
-</label>
+            <input
+                type="hidden"
+                name="_template"
+                value="table"
+            >
 
 
-<div class="stars">
-
-<button
-type="button"
-class="star"
-data-rating="1"
->
-★
-</button>
-
-<button
-type="button"
-class="star"
-data-rating="2"
->
-★
-</button>
-
-<button
-type="button"
-class="star"
-data-rating="3"
->
-★
-</button>
-
-<button
-type="button"
-class="star"
-data-rating="4"
->
-★
-</button>
-
-<button
-type="button"
-class="star"
-data-rating="5"
->
-★
-</button>
-
-</div>
+            <input
+                type="hidden"
+                name="_captcha"
+                value="true"
+            >
 
 
-<input
-type="hidden"
-id="rating"
-name="rating"
->
+            <input
+                type="hidden"
+                name="_next"
+                value="https://YOUR-USERNAME.github.io/YOUR-REPOSITORY/feedback-success.html"
+            >
 
 
-<label>
+            <!-- NAME -->
 
-What did you like?
+            <label for="feedbackName">
+                Name
+            </label>
 
-<textarea
-name="liked"
-placeholder="Tell us what you liked about AgroSense..."
-></textarea>
-
-</label>
-
-
-<label>
-
-Improvements Needed
-
-<textarea
-name="improvements"
-placeholder="What improvements would you like to see?"
-></textarea>
-
-</label>
+            <input
+                type="text"
+                id="feedbackName"
+                name="Name"
+                placeholder="Enter your name"
+                required
+            >
 
 
-<label>
+            <!-- RATING -->
 
-Additional Suggestions
-
-<textarea
-name="suggestions"
-placeholder="Share any other ideas..."
-></textarea>
-
-</label>
+            <label>
+                Rating
+            </label>
 
 
-<div class="button-row">
+            <div class="stars">
 
-<button
-class="btn primary"
-type="submit"
->
-Submit Feedback
-</button>
+                <button
+                    type="button"
+                    class="star"
+                    data-rating="1"
+                    aria-label="1 star"
+                >
+                    ★
+                </button>
+
+                <button
+                    type="button"
+                    class="star"
+                    data-rating="2"
+                    aria-label="2 stars"
+                >
+                    ★
+                </button>
+
+                <button
+                    type="button"
+                    class="star"
+                    data-rating="3"
+                    aria-label="3 stars"
+                >
+                    ★
+                </button>
+
+                <button
+                    type="button"
+                    class="star"
+                    data-rating="4"
+                    aria-label="4 stars"
+                >
+                    ★
+                </button>
+
+                <button
+                    type="button"
+                    class="star"
+                    data-rating="5"
+                    aria-label="5 stars"
+                >
+                    ★
+                </button>
+
+            </div>
 
 
-<button
-class="btn btn-reset"
-type="button"
-onclick="resetFeedback()"
->
-Reset
-</button>
+            <!-- IMPORTANT:
+                 Hidden field receives rating -->
 
-</div>
-
-
-</form>
+            <input
+                type="hidden"
+                id="rating"
+                name="Star Rating"
+                value=""
+                required
+            >
 
 
-<div
-id="feedbackSuccess"
-class="success hidden"
->
-✓ Thank you for your valuable feedback!
-</div>
+            <!-- IMPROVEMENTS -->
+
+            <label for="improvements">
+                Improvements Needed
+            </label>
+
+            <textarea
+                id="improvements"
+                name="Improvements Needed"
+                placeholder="Tell us what we can improve..."
+                required
+            ></textarea>
 
 
-</section>
+            <!-- FAVORITE PART -->
+
+            <label for="favorite">
+                Favorite Part
+            </label>
+
+            <textarea
+                id="favorite"
+                name="Favorite Part"
+                placeholder="What did you like most?"
+            ></textarea>
+
+
+            <div class="button-row">
+
+                <button
+                    type="submit"
+                    class="btn primary"
+                >
+                    Send Feedback
+                    <span>→</span>
+                </button>
+
+
+                <button
+                    type="reset"
+                    class="btn btn-reset"
+                    onclick="resetStars()"
+                >
+                    Reset
+                </button>
+
+            </div>
+
+        </form>
+
+    </section>
 
 </main>
 
 
 <footer>
-© AgroSense Dynamics. All Rights Reserved.
+
+    © 2026 AgroSense Dynamics.
+    All Rights Reserved.
+
 </footer>
 
 
-<script src="app.js"></script>
+<script>
+
+const stars =
+    document.querySelectorAll(".star");
+
+const ratingInput =
+    document.getElementById("rating");
+
+
+stars.forEach(function(star) {
+
+    star.addEventListener("click", function() {
+
+        const rating =
+            Number(this.dataset.rating);
+
+
+        ratingInput.value =
+            rating + " / 5";
+
+
+        stars.forEach(function(item) {
+
+            if (
+                Number(item.dataset.rating)
+                <= rating
+            ) {
+
+                item.classList.add("active");
+
+            } else {
+
+                item.classList.remove("active");
+
+            }
+
+        });
+
+    });
+
+});
+
+
+function resetStars() {
+
+    ratingInput.value = "";
+
+    stars.forEach(function(star) {
+
+        star.classList.remove("active");
+
+    });
+
+}
+
+</script>
+
 
 </body>
 </html>
