@@ -1,117 +1,265 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AgroSense Dynamics | Welcome</title>
-<link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="AgroSense Dynamics - Smart agricultural protection powered by AI, IoT and solar energy."
+    >
+
+    <title>AgroSense Dynamics | Smart Agriculture</title>
+
+    <link rel="stylesheet" href="style.css">
 </head>
 
-<body class="landing">
+<body>
 
-<header class="navbar">
-    <a href="index.html" class="logo">
-        <span class="logo-icon">A</span>
-        AgroSense <span>Dynamics</span>
-    </a>
-</header>
+    <!-- =========================
+         NAVBAR
+    ========================== -->
 
-<main class="hero">
+    <nav class="navbar">
 
-    <section class="hero-content reveal">
+        <a href="index.html" class="logo">
 
-        <div class="badge">● SMART FARM PROTECTION</div>
+            <span class="logo-icon">A</span>
 
-        <h1>
-            Protect your farm with
-            <span class="gradient">intelligent technology.</span>
-        </h1>
+            <span>
+                AgroSense
+                <span>Dynamics</span>
+            </span>
 
-        <p>
-            AgroSense Dynamics is an integrated agricultural
-            protection system combining AI vision, smart sensors,
-            a 3D-printed rover, automated deterrents, security
-            monitoring and solar-powered technology.
-        </p>
+        </a>
 
-        <div class="hero-stats">
-            <div>
-                <strong>AI</strong>
-                <span>Vision</span>
-            </div>
+        <div class="nav-links">
 
-            <div>
-                <strong>IoT</strong>
-                <span>Control</span>
-            </div>
+            <a href="index.html" class="active">
+                Home
+            </a>
 
-            <div>
-                <strong>24/7</strong>
-                <span>Protection</span>
-            </div>
+            <a href="overview.html">
+                Overview
+            </a>
+
+            <a href="peacock.html">
+                Peacock
+            </a>
+
+            <a href="theft.html">
+                Theft
+            </a>
+
+            <a href="snake.html">
+                Snake
+            </a>
+
+            <a href="order.html">
+                Order
+            </a>
+
+            <a href="feedback.html">
+                Feedback
+            </a>
+
         </div>
 
-    </section>
+    </nav>
 
 
-    <section class="glass login-card reveal delay">
+    <!-- =========================
+         HERO
+    ========================== -->
 
-        <div class="large-icon">🌱</div>
+    <main class="hero">
 
-        <h2>Welcome to AgroSense</h2>
+        <section class="hero-content reveal">
 
-        <p class="muted">
-            Enter your details to explore our smart
-            agricultural protection system.
-        </p>
+            <div class="badge">
+                ● SMART AGRICULTURE SYSTEM
+            </div>
 
-        <form id="profileForm">
+            <h1>
+                Protecting farms
+                <span class="gradient">
+                    intelligently.
+                </span>
+            </h1>
 
-            <label>
-                Name
+            <p>
+                AgroSense Dynamics combines artificial intelligence,
+                IoT, robotics and solar-powered technology to create
+                an intelligent agricultural protection system.
+            </p>
+
+
+            <!-- HERO STATS -->
+
+            <div class="hero-stats">
+
+                <div>
+                    <strong>AI</strong>
+                    <span>Detection</span>
+                </div>
+
+                <div>
+                    <strong>IoT</strong>
+                    <span>Control</span>
+                </div>
+
+                <div>
+                    <strong>24/7</strong>
+                    <span>Protection</span>
+                </div>
+
+                <div>
+                    <strong>Solar</strong>
+                    <span>Powered</span>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             LOGIN CARD
+        ========================== -->
+
+        <section class="login-card glass reveal delay">
+
+            <div class="large-icon">
+                🌱
+            </div>
+
+            <h2>
+                Welcome
+            </h2>
+
+            <p class="muted">
+                Enter your details to explore
+                AgroSense Dynamics.
+            </p>
+
+
+            <form id="loginForm">
+
+                <!-- NAME -->
+
+                <label for="name">
+                    Full Name
+                </label>
+
                 <input
                     type="text"
                     id="name"
-                    placeholder="Enter your name"
+                    name="name"
+                    placeholder="Enter your full name"
+                    autocomplete="name"
                     required
                 >
-            </label>
 
-            <label>
-                Address
-                <textarea
-                    id="address"
-                    placeholder="Enter your address"
-                    required
-                ></textarea>
-            </label>
 
-            <label>
-                Phone Number
+                <!-- PHONE -->
+
+                <label for="phone">
+                    Phone Number
+                </label>
+
                 <input
                     type="tel"
                     id="phone"
-                    placeholder="+91 XXXXX XXXXX"
+                    name="phone"
+                    placeholder="Enter your phone number"
+                    autocomplete="tel"
+                    pattern="[0-9+\-\s()]{10,15}"
                     required
                 >
-            </label>
 
-            <button class="btn primary" type="submit">
-                Continue
-                <span>→</span>
-            </button>
 
-        </form>
+                <!-- ADDRESS -->
+
+                <label for="address">
+                    Address
+                </label>
+
+                <textarea
+                    id="address"
+                    name="address"
+                    placeholder="Enter your address"
+                    autocomplete="street-address"
+                    required
+                ></textarea>
+
+
+                <!-- CONTINUE BUTTON -->
+
+                <button
+                    type="submit"
+                    class="btn primary"
+                >
+
+                    Continue
+
+                    <span>
+                        →
+                    </span>
+
+                </button>
+
+            </form>
+
+        </section>
+
+    </main>
+
+
+    <!-- =========================
+         SOLAR BANNER
+    ========================== -->
+
+    <section class="info-banner glass reveal">
+
+        <div class="badge">
+            ☀ PM KUSUM
+        </div>
+
+        <h2>
+            Powered by clean solar energy
+        </h2>
+
+        <p>
+            AgroSense Dynamics is designed around
+            solar-powered agricultural technology,
+            supporting sustainable and intelligent
+            farm protection.
+        </p>
 
     </section>
 
-</main>
 
-<footer>
-    © AgroSense Dynamics. All Rights Reserved.
-</footer>
+    <!-- =========================
+         FOOTER
+    ========================== -->
 
-<script src="app.js"></script>
+    <footer>
+
+        © 2026 AgroSense Dynamics.
+        All Rights Reserved.
+
+    </footer>
+
+
+    <!-- =========================
+         JAVASCRIPT
+    ========================== -->
+
+    <script src="script.js"></script>
 
 </body>
 </html>
