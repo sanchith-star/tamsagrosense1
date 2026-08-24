@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AgroSense | Feedback</title>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<nav class="navbar">
+
+<a href="overview.html" class="logo">
+<span class="logo-icon">A</span>
+AgroSense <span>Dynamics</span>
+</a>
+
+<div class="nav-links">
+<a href="overview.html">Overview</a>
+<a href="peacock.html">Peacock</a>
+<a href="security.html">Security</a>
+<a href="snake.html">Snake</a>
+<a href="rover.html">Rover</a>
+<a href="solar.html">Solar</a>
+<a href="order.html">Order</a>
+<a class="active" href="feedback.html">Feedback</a>
+</div>
+
+</nav>
+
+
+<main>
+
+<section class="page-header reveal">
+
+<div class="badge">YOUR OPINION MATTERS</div>
+
+<h1>
+Help us make
+<span class="gradient">AgroSense better.</span>
+</h1>
+
+<p>
+Your feedback helps us improve our technology,
+design and agricultural protection solutions.
+</p>
+
+</section>
+
+
+<section class="glass feedback">
+
+
+<form id="feedbackForm">
+
+
+<label>
+Overall Rating
+</label>
+
+
+<div class="stars">
+
+<button
+type="button"
+class="star"
+data-rating="1"
+>
+★
+</button>
+
+<button
+type="button"
+class="star"
+data-rating="2"
+>
+★
+</button>
+
+<button
+type="button"
+class="star"
+data-rating="3"
+>
+★
+</button>
+
+<button
+type="button"
+class="star"
+data-rating="4"
+>
+★
+</button>
+
+<button
+type="button"
+class="star"
+data-rating="5"
+>
+★
+</button>
+
+</div>
+
+
+<input
+type="hidden"
+id="rating"
+name="rating"
+>
+
+
+<label>
+
+What did you like?
+
+<textarea
+name="liked"
+placeholder="Tell us what you liked about AgroSense..."
+></textarea>
+
+</label>
+
+
+<label>
+
+Improvements Needed
+
+<textarea
+name="improvements"
+placeholder="What improvements would you like to see?"
+></textarea>
+
+</label>
+
+
+<label>
+
+Additional Suggestions
+
+<textarea
+name="suggestions"
+placeholder="Share any other ideas..."
+></textarea>
+
+</label>
+
+
+<div class="button-row">
+
+<button
+class="btn primary"
+type="submit"
+>
+Submit Feedback
+</button>
+
+
+<button
+class="btn btn-reset"
+type="button"
+onclick="resetFeedback()"
+>
+Reset
+</button>
+
+</div>
+
+
+</form>
+
+
+<div
+id="feedbackSuccess"
+class="success hidden"
+>
+✓ Thank you for your valuable feedback!
+</div>
+
+
+</section>
+
+</main>
+
+
+<footer>
+© AgroSense Dynamics. All Rights Reserved.
+</footer>
+
+
+<script src="app.js"></script>
+
+</body>
+</html>
